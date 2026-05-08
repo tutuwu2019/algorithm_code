@@ -25,7 +25,7 @@ current.pop_back();
 candidates = [2,3,6,7], target = 7
 
 
-1. 准备(排序)：
+1. 准备(预处理：排序，方便后续的去重、剪枝)：
 - 排序后 candidates = [2,3,6,7]
 -  初始调用 backtrack(target=7, start=0, current=[])  
 
