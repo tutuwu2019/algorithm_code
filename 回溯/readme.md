@@ -2,7 +2,16 @@
 > 回溯 常常与递归 强依赖。尤其是涉及”暴力“遍历
 
 
-核心语义思想
+## 核心语义思想
+
+choose -> recurse -> backtrack 三步语义
+回溯法标准范式，也叫试探-递归-撤销模式
+
+> DFS 遍历树/图时，常常需要：
+> - 标记当前节点为已经访问(对应push_back)
+> - 递归访问所有邻居(对应 dfs 递归)
+> - 取消标记(对应 pop_back)
+
 ```cpp
 
 current.push_back(xxx);
@@ -11,7 +20,7 @@ current.pop_back();
 ```
 
 
-具体的逻辑流程以leetcode 39 组合总和为例
+## 具体的逻辑流程以leetcode 39 组合总和为例
 
 candidates = [2,3,6,7], target = 7
 
