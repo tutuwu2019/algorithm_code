@@ -114,3 +114,48 @@ root (target=3, start=0)
 └─ i=1 (1) → i>start且cand[1]==cand[0] → 跳过！整个分支被剪掉
 
 ```
+
+
+
+### 131 分割回文串
+
+```cpp
+class Solution {
+public:
+    vector<vector<string>> partition(string s) {
+        vector<vector<string>> ans;
+
+        vector<string> current;
+        dfs(s, 0, current, ans);
+        return ans;
+
+    }
+
+    void dfs(string& s, int idx, vector<string>& current, vector<vector<string>>& ans){
+        if(s.length() == idx){
+            ans.push_back(current);
+            return;
+        }
+
+        for(int i = idx; i < s.size(); i++){
+            if(isCheck(s, idx, i)){
+                current.push_back(s.substr(idx, i - idx + 1));
+                dfs(s, i + 1, current, ans);
+                current.pop_back();
+            }
+        }
+        return;
+    }
+
+    // 判断是否是回文
+    bool isCheck(string& str, int left, int right){
+        while(left < right){
+            if(str[left++] != str[right--]){
+                return false;
+            }
+        }
+        return true;
+    }
+};
+```
+
